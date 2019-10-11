@@ -45,6 +45,7 @@ def mapeamento_direto(enderecos_solicitados):
 
 # mapeamento associativo
 def mapeamento_associativo(enderecos_solicitados, tipo):
+
 	status_cache()
 	global acertos, erros
 	acertos = 0
@@ -86,34 +87,19 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 		while (contador < len(enderecos_solicitados)):
 			if (enderecos_solicitados[contador] in dados_cache):
 				acertos += 1
-				aux = dados_cache.pop(dados_cache.index(int(enderecos_solicitados[contador])))
-				dados_cache.insert(0, aux)
+				dados_cache_frequencia[dados_cache.index(int(enderecos_solicitados[contador]))] += 1
 			else:
 				erros += 1
 				if (None in dados_cache):
+					dados_cache_frequencia[dados_cache.index(None)] = 1
 					dados_cache[dados_cache.index(None)] = enderecos_solicitados[contador]
 				else:
-					dados_cache.pop()
-					dados_cache.append(enderecos_solicitados[contador])
+					index = dados_cache.index(min(dados_cache))
+					dados_cache.pop(index)
+					dados_cache.insert(index, enderecos_solicitados[contador])
+					dados_cache_frequencia[index] = 1
 			contador += 1
-		'''
-		# verificar se os enderecos solicitados ja estao na cache
-		while (contador < len(enderecos_solicitados)):
-			# se ja estiver dentro da cache
-			if (int(enderecos_solicitados[contador]) in dados_cache):
-				acertos += 1  # adiciona na variavel que aconteceu um cache hit
-				aux = dados_cache.pop(dados_cache.index(int(enderecos_solicitados[contador])))
-				dados_cache.reverse()
-				dados_cache.append(aux)
-				dados_cache.reverse()
-			# se não estiver dentro da cache
-			else:
-				dados_cache.pop()
-				dados_cache.append(enderecos_solicitados[
-									   contador])  # substitui pelo novo valor de memoria que nao estava presente na cache
-				erros += 1  # adiciona na variavel que aconteceu um cache miss
-			contador += 1
-		'''
+
 	if (tipo == "RANDOM"):
 
 		while (contador < len(enderecos_solicitados)):
@@ -234,10 +220,48 @@ mapeamento_associativo(enderecos_memoria, "LRU")
 '''
 
 # ------------------------------LFU------------------------------------
-
+'''
 dados_cache_frequencia = instancia_memoria_cache()
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
 mapeamento_associativo(enderecos_memoria, "LFU")
-enderecos_memoria = gerar_requisicoes_aleatorias(5)
+enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3])
+print(dados_cache_frequencia)
 mapeamento_associativo(enderecos_memoria, "LFU")
+print(dados_cache_frequencia)
+'''
 
+# ------------- Mapeamento Associativo por conjunto --------------------
+# ------------------------------FIFO------------------------------------
+'''
+enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+mapeamento_associativo(enderecos_memoria, "FIFO")
+#enderecos_memoria = gerar_requisicoes_aleatorias(5)
+mapeamento_associativo(enderecos_memoria, "FIFO")
+'''
+
+# ----------------------------RANDOM------------------------------------
+'''
+enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+mapeamento_associativo(enderecos_memoria, "RANDOM")
+enderecos_memoria = gerar_requisicoes_aleatorias(5)
+mapeamento_associativo(enderecos_memoria, "RANDOM")
+'''
+
+# ------------------------------LRU------------------------------------
+'''
+enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+mapeamento_associativo(enderecos_memoria, "LRU")
+enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1])
+mapeamento_associativo(enderecos_memoria, "LRU")
+'''
+
+# ------------------------------LFU------------------------------------
+'''
+dados_cache_frequencia = instancia_memoria_cache()
+enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+mapeamento_associativo(enderecos_memoria, "LFU")
+enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3])
+print(dados_cache_frequencia)
+mapeamento_associativo(enderecos_memoria, "LFU")
+print(dados_cache_frequencia)
+'''
