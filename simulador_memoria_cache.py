@@ -147,27 +147,49 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 					dados_cache[conjunto*num_conjuntos+dados_cache[conjunto*num_conjuntos:(conjunto+1)*num_conjuntos].index(None)] = enderecos_solicitados[contador]
 				else:
 					dados_cache.pop(conjunto*num_conjuntos)
-					dados_cache.insert((conjunto+1)*num_conjuntos+num_conjuntos-1,enderecos_solicitados[contador])
+					dados_cache.insert((conjunto+1)*num_conjuntos-1,enderecos_solicitados[contador])
 			contador += 1
 			status_cache_operacoes()
 
 	if (tipo == "LRU"):
 
 		while (contador < len(enderecos_solicitados)):
-			if (enderecos_solicitados[contador] in dados_cache):
+			conjunto = enderecos_solicitados[contador] % tamanho_paginas_cache / num_conjuntos
+			print enderecos_solicitados[contador]
+			print conjunto
+			if (enderecos_solicitados[contador] in dados_cache[conjunto * num_conjuntos:(conjunto + 1) * num_conjuntos]):
+				print "HIT"
 				acertos += 1
 				aux = dados_cache.pop(dados_cache.index(int(enderecos_solicitados[contador])))
-				dados_cache.insert(0, aux)
+				dados_cache.insert(conjunto * num_conjuntos, aux)
 			else:
+				print "MISS"
 				erros += 1
-				if (None in dados_cache):
-					dados_cache[dados_cache.index(None)] = enderecos_solicitados[contador]
+				if (None in dados_cache[conjunto * num_conjuntos:(conjunto + 1) * num_conjuntos]):
+					dados_cache[
+						conjunto * num_conjuntos + dados_cache[conjunto * num_conjuntos:(conjunto + 1) * num_conjuntos].index(
+							None)] = enderecos_solicitados[contador]
 				else:
-					dados_cache.pop()
-					dados_cache.append(enderecos_solicitados[contador])
+					dados_cache.pop((conjunto + 1) * num_conjuntos - 1)
+					dados_cache.insert((conjunto + 1) * num_conjuntos - 1, enderecos_solicitados[contador])
 			contador += 1
 			status_cache_operacoes()
-
+		'''
+        while (contador < len(enderecos_solicitados)):
+                if (enderecos_solicitados[contador] in dados_cache):
+                    acertos += 1
+                    aux = dados_cache.pop(dados_cache.index(int(enderecos_solicitados[contador])))
+                    dados_cache.insert(0, aux)
+                else:
+                    erros += 1
+                    if (None in dados_cache):
+                        dados_cache[dados_cache.index(None)] = enderecos_solicitados[contador]
+                    else:
+                        dados_cache.pop()
+                        dados_cache.append(enderecos_solicitados[contador])
+                contador += 1
+                status_cache_operacoes()
+        '''
 	if (tipo == "LFU"):
 
 		while (contador < len(enderecos_solicitados)):
@@ -306,12 +328,12 @@ print(dados_cache_frequencia)
 
 # ------------- Mapeamento Associativo por conjunto --------------------
 # ------------------------------FIFO------------------------------------
-
+'''
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
 mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
 enderecos_memoria = gerar_requisicoes_aleatorias(5)
 mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
-
+'''
 
 # ----------------------------RANDOM------------------------------------
 '''
@@ -322,12 +344,12 @@ mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
 '''
 
 # ------------------------------LRU------------------------------------
-'''
+
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
 mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
-enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1])
+enderecos_memoria = list([1159, 1159, 1159, 1039, enderecos_memoria[5], 1])
 mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
-'''
+
 
 # ------------------------------LFU------------------------------------
 '''
