@@ -174,22 +174,7 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 					dados_cache.insert((conjunto + 1) * num_conjuntos - 1, enderecos_solicitados[contador])
 			contador += 1
 			status_cache_operacoes()
-		'''
-        while (contador < len(enderecos_solicitados)):
-                if (enderecos_solicitados[contador] in dados_cache):
-                    acertos += 1
-                    aux = dados_cache.pop(dados_cache.index(int(enderecos_solicitados[contador])))
-                    dados_cache.insert(0, aux)
-                else:
-                    erros += 1
-                    if (None in dados_cache):
-                        dados_cache[dados_cache.index(None)] = enderecos_solicitados[contador]
-                    else:
-                        dados_cache.pop()
-                        dados_cache.append(enderecos_solicitados[contador])
-                contador += 1
-                status_cache_operacoes()
-        '''
+
 	if (tipo == "LFU"):
 
 		while (contador < len(enderecos_solicitados)):
