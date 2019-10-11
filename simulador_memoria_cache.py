@@ -66,6 +66,7 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 					dados_cache.pop(0)
 					dados_cache.append(enderecos_solicitados[contador])
 			contador += 1
+			status_cache_operacoes()
 
 	if (tipo == "LRU"):
 
@@ -125,7 +126,7 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 	print
 
 
-# mapeamento associativo direto
+# mapeamento associativo por conjuntos
 def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 	status_cache()
 	global acertos, erros
@@ -135,15 +136,18 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 	if (tipo == "FIFO"):
 
 		while (contador < len(enderecos_solicitados)):
-			if (enderecos_solicitados[contador] in dados_cache):
+			conjunto = enderecos_solicitados[contador]%tamanho_paginas_cache/num_conjuntos
+			print enderecos_solicitados[contador]
+			print conjunto
+			if (enderecos_solicitados[contador] in dados_cache[conjunto*num_conjuntos:(conjunto+1)*num_conjuntos]):
 				acertos += 1
 			else:
 				erros += 1
-				if (None in dados_cache):
-					dados_cache[dados_cache.index(None)] = enderecos_solicitados[contador]
+				if (None in dados_cache[conjunto*num_conjuntos:(conjunto+1)*num_conjuntos]):
+					dados_cache[conjunto*num_conjuntos+dados_cache[conjunto*num_conjuntos:(conjunto+1)*num_conjuntos].index(None)] = enderecos_solicitados[contador]
 				else:
-					dados_cache.pop(0)
-					dados_cache.append(enderecos_solicitados[contador])
+					dados_cache.pop(conjunto*num_conjuntos)
+					dados_cache.insert((conjunto+1)*num_conjuntos+num_conjuntos-1,enderecos_solicitados[contador])
 			contador += 1
 			status_cache_operacoes()
 
@@ -234,13 +238,14 @@ def status_cache():
 
 
 def status_cache_operacoes():
-	print("dados da cache: " + str(dados_cache))
+	print("dados da cache após requisição da CPU: " + str(dados_cache))
 
 # print("O valor do quadro da primeira linha da cache: "+str(dados_cache[0]))
 # print("O valor do quadro da ultima linha da cache: "+str(dados_cache[tamanho_paginas_cache-1]))
 
 # ---------------------- Configuracoes ---------------------------
 # recebe o tamanho da memoria cache (numero total de paginas)
+num_conjuntos = 2
 tamanho_paginas_cache = 12
 tamanho_mp = tamanho_paginas_cache * 100
 dados_cache = instancia_memoria_cache()
@@ -303,34 +308,34 @@ print(dados_cache_frequencia)
 # ------------------------------FIFO------------------------------------
 
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "FIFO")
-#enderecos_memoria = gerar_requisicoes_aleatorias(5)
-mapeamento_associativo(enderecos_memoria, "FIFO")
+mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
+enderecos_memoria = gerar_requisicoes_aleatorias(5)
+mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
 
 
 # ----------------------------RANDOM------------------------------------
 '''
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "RANDOM")
+mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
 enderecos_memoria = gerar_requisicoes_aleatorias(5)
-mapeamento_associativo(enderecos_memoria, "RANDOM")
+mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
 '''
 
 # ------------------------------LRU------------------------------------
 '''
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "LRU")
+mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
 enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1])
-mapeamento_associativo(enderecos_memoria, "LRU")
+mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
 '''
 
 # ------------------------------LFU------------------------------------
 '''
 dados_cache_frequencia = instancia_memoria_cache()
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "LFU")
+mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
 enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3])
 print(dados_cache_frequencia)
-mapeamento_associativo(enderecos_memoria, "LFU")
+mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
 print(dados_cache_frequencia)
 '''
