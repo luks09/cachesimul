@@ -432,3 +432,4 @@ if (tipo_mapeamento == 3):
         #enderecos_memoria = gerar_requisicoes_aleatorias(5) #teste - gerando requisicoes aleatórias
         #mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM") #teste
 
+raw_input("Pressione qualquer tecla para finalizar")
