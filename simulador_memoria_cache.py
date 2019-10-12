@@ -54,6 +54,8 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 	erros = 0
 	contador = 0
 
+	enderecos_solicitados = map(int, enderecos_solicitados)
+
 	if (tipo == "FIFO"):
 
 		while (contador < len(enderecos_solicitados)):
@@ -141,6 +143,9 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 	acertos = 0
 	erros = 0
 	contador = 0
+
+	enderecos_solicitados = map(int, enderecos_solicitados)
+
 	if (tipo == "FIFO"):
 
 		while (contador < len(enderecos_solicitados)):
@@ -333,22 +338,22 @@ while (tipo_mapeamento != 1 and tipo_mapeamento != 2 and tipo_mapeamento != 3):
     tipo_mapeamento = int(tipo_mapeamento)
 
 if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
-    tipo = raw_input("Digite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
+    tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
     tipo = int(tipo)
     while (tipo != 1 and tipo != 2 and tipo != 3 and tipo != 4):
-        tipo = raw_input("Digite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
+        tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
         tipo = int(tipo)
     if (tipo_mapeamento == 3):
-        tamanho_quadro = raw_input("Digite o número de quadros por conjunto: ")
+        tamanho_quadro = raw_input("\nDigite o número de quadros por conjunto: ")
         tamanho_quadro = int(tamanho_quadro)
         while (tamanho_quadro < 0 and tamanho_paginas_cache%tamanho_quadro != 0):
-            tamanho_quadro = raw_input("Digite o número de quadros por conjunto: ")
+            tamanho_quadro = raw_input("\nDigite o número de quadros por conjunto: ")
             tamanho_quadro = int(tamanho_quadro)
 
-arquivo_entrada = raw_input("Digite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executável):")
+arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executável. Exemplo: 'nome_do_arquivo.txt'): ")
 enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 while (enderecos_memoria == False):
-    arquivo_entrada = raw_input("Arquivo não encontrado! Digite o nome do arquivo de entrada novamente: ")
+    arquivo_entrada = raw_input("\nArquivo não encontrado! Digite o nome do arquivo de entrada novamente: ")
     enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 
 tamanho_mp = tamanho_paginas_cache * 100
