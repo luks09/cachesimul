@@ -346,8 +346,8 @@ if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
     if (tipo_mapeamento == 3):
         tamanho_quadro = raw_input("\nDigite o número de quadros por conjunto: ")
         tamanho_quadro = int(tamanho_quadro)
-        while (tamanho_quadro < 0 and tamanho_paginas_cache%tamanho_quadro != 0):
-            tamanho_quadro = raw_input("\nDigite o número de quadros por conjunto: ")
+        while (tamanho_quadro < 0 or tamanho_paginas_cache%tamanho_quadro != 0):
+            tamanho_quadro = raw_input("\nNúmero de quadros não multiplo de número de células da memória cache! Digite outro número de quadros por conjunto: ")
             tamanho_quadro = int(tamanho_quadro)
 
 arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executável. Exemplo: 'nome_do_arquivo.txt'): ")
