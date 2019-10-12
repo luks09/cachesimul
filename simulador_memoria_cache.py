@@ -388,7 +388,7 @@ if (tipo_mapeamento == 2):
         #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
         mapeamento_associativo(enderecos_memoria, "LFU")
         #enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3]) #teste
-        print("Frequencia das páginas da cache: "+dados_cache_frequencia)
+        print("Frequencia das páginas da cache: %s"%dados_cache_frequencia)
         #mapeamento_associativo(enderecos_memoria, "LFU")  #teste
         #print(dados_cache_frequencia)  #teste
 
@@ -421,7 +421,7 @@ if (tipo_mapeamento == 3):
 		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
 		#enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1, 3, 4, 5, 1, 4, 2, 3, 3]) #teste
-		print("Frequencia das páginas da cache: " + dados_cache_frequencia)
+		print("Frequencia das páginas da cache: %s" % dados_cache_frequencia)
 		#mapeamento_associativo_conjuntos(enderecos_memoria, "LFU") #teste
 		#print(dados_cache_frequencia) #teste
 
