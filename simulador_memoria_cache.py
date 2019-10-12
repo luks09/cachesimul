@@ -40,8 +40,7 @@ def mapeamento_direto(enderecos_solicitados):
 			dados_cache[int(endereco) % tamanho_paginas_cache] = int(endereco)
 			erros += 1
 		status_cache_operacoes()
-	print("Acertos: " + str(acertos))
-	print("Erros: " + str(erros))
+	fracao_acertos()
 	status_cache()
 	print
 
@@ -130,8 +129,7 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 			contador += 1
 			status_cache_operacoes()
 
-	print("Acertos: " + str(acertos))
-	print("Erros: " + str(erros))
+	fracao_acertos()
 	status_cache()
 	print
 
@@ -147,8 +145,8 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 		while (contador < len(enderecos_solicitados)):
 			conjunto = enderecos_solicitados[contador]%tamanho_paginas_cache/tamanho_quadro
-			print enderecos_solicitados[contador]
-			print conjunto
+			#print enderecos_solicitados[contador]
+			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto*tamanho_quadro:(conjunto+1)*tamanho_quadro]):
 				print "HIT"
 				acertos += 1
@@ -167,8 +165,8 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 		while (contador < len(enderecos_solicitados)):
 			conjunto = enderecos_solicitados[contador] % tamanho_paginas_cache / tamanho_quadro
-			print enderecos_solicitados[contador]
-			print conjunto
+			#print enderecos_solicitados[contador]
+			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
 				print "HIT"
 				acertos += 1
@@ -191,8 +189,8 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 		while (contador < len(enderecos_solicitados)):
 			conjunto = enderecos_solicitados[contador] % tamanho_paginas_cache / tamanho_quadro
-			print enderecos_solicitados[contador]
-			print conjunto
+			#print enderecos_solicitados[contador]
+			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
 				print "HIT"
 				acertos += 1
@@ -238,8 +236,8 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 		while (contador < len(enderecos_solicitados)):
 			conjunto = enderecos_solicitados[contador] % tamanho_paginas_cache / tamanho_quadro
-			print enderecos_solicitados[contador]
-			print conjunto
+			#print enderecos_solicitados[contador]
+			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
 				print "HIT"
 				acertos += 1
@@ -273,8 +271,7 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 			contador += 1
 			status_cache_operacoes()
 		'''
-	print("Acertos: " + str(acertos))
-	print("Erros: " + str(erros))
+	fracao_acertos()
 	status_cache()
 	print
 
@@ -286,8 +283,8 @@ def abrir_arquivo_de_acessos_mp(nome):
 	return enderecos
 
 
-def gerar_requisicoes_aleatorias(tamanho_requiscoes):
-	return np.random.randint(low=0, high=tamanho_mp, size=tamanho_requiscoes)
+def gerar_requisicoes_aleatorias(tamanho_requisicoes):
+	return np.random.randint(low=0, high=tamanho_mp, size=tamanho_requisicoes)
 
 
 def instancia_memoria_cache():
@@ -307,8 +304,15 @@ def status_cache():
 	print("dados da cache: " + str(dados_cache))
 
 
+def fracao_acertos():
+    #print("Acertos: " + str(acertos))
+    #print("Erros: " + str(erros))
+    print "Fração de acertos: %.3f %%" %((acertos/float((erros+acertos)))*100)
+
+
 def status_cache_operacoes():
 	print("dados da cache após requisição da CPU: " + str(dados_cache))
+
 
 # print("O valor do quadro da primeira linha da cache: "+str(dados_cache[0]))
 # print("O valor do quadro da ultima linha da cache: "+str(dados_cache[tamanho_paginas_cache-1]))
@@ -324,25 +328,25 @@ propriedades_memorias()
 
 
 # -------------------- Mapeamento direto -------------------------
-
+'''
 #teste mapeamento direto
 #enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
 mapeamento_direto(enderecos_memoria)
 #enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
 mapeamento_direto(enderecos_memoria)
-
+'''
 # ----------------------------------------------------------------
 
 
 # -------------------- Mapeamento Associativo -------------------------
 # ------------------------------FIFO------------------------------------
-'''
+
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
 mapeamento_associativo(enderecos_memoria, "FIFO")
 enderecos_memoria = gerar_requisicoes_aleatorias(5)
 mapeamento_associativo(enderecos_memoria, "FIFO")
-'''
+
 
 # ----------------------------RANDOM------------------------------------
 '''
@@ -377,7 +381,7 @@ print(dados_cache_frequencia)
 '''
 enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
 mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
-enderecos_memoria = gerar_requisicoes_aleatorias(5)
+#enderecos_memoria = gerar_requisicoes_aleatorias(5)
 mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
 '''
 
