@@ -184,9 +184,10 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-*MAPEAMENTO ASSOCIATIVO:
+#### *MAPEAMENTO ASSOCIATIVO:
 
-- FIFO:
+##### FIFO:
+
 #----------------------------------------
 
 Digite o numero de paginas da cache: 12
@@ -338,7 +339,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-- LRU:
+##### LRU:
 
 #----------------------------------------
 
@@ -490,7 +491,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-- LFU:
+##### LFU:
 
 #----------------------------------------
 
@@ -644,7 +645,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-- RANDOM:
+##### RANDOM:
 
 #----------------------------------------
 
@@ -796,9 +797,9 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-*MAPEAMENTO ASSOCIATIVO POR CONJUNTO:
+#### *MAPEAMENTO ASSOCIATIVO POR CONJUNTO:
 
-- FIFO:
+##### FIFO:
 
 #----------------------------------------
 
@@ -954,7 +955,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-- LRU:
+##### LRU:
 
 #----------------------------------------
 
@@ -1110,7 +1111,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-- LFU:
+##### LFU:
 
 #----------------------------------------
 
@@ -1268,7 +1269,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-- RANDOM:
+##### RANDOM:
 
 #----------------------------------------
 
