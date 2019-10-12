@@ -2,7 +2,7 @@
 Simulador de substituição de memória cache
 
 REQUISITOS:
--> Ter um interpretador python instalado com versão abaixo da 3;
+-> Ter um Python instalado com versão abaixo da 3;
 
 COMO EXECUTAR:
 -> Basta clicar duas vezes no arquivo simulador_de_memoria_cache.py para executar o programa
