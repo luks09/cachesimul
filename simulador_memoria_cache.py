@@ -277,14 +277,17 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 
 def abrir_arquivo_de_acessos_mp(nome):
-	f = open(nome, "r")
-	enderecos = f.readlines()
-	f.close()
-	return enderecos
+	try:
+		f = open(nome, "r")
+		enderecos = f.readlines()
+		f.close()
+		return enderecos
+	except:
+		return False
 
 
 def gerar_requisicoes_aleatorias(tamanho_requisicoes):
-	return np.random.randint(low=0, high=tamanho_mp, size=tamanho_requisicoes)
+	return np.random.randint(low=0, high=tamanho_paginas_cache*3, size=tamanho_requisicoes)
 
 
 def instancia_memoria_cache():
@@ -311,7 +314,7 @@ def fracao_acertos():
 
 
 def status_cache_operacoes():
-	print("dados da cache após requisição da CPU: " + str(dados_cache))
+	print("páginas armazenadas na memória cache após a operação: " + str(dados_cache))
 
 
 # print("O valor do quadro da primeira linha da cache: "+str(dados_cache[0]))
@@ -319,8 +322,35 @@ def status_cache_operacoes():
 
 # ---------------------- Configuracoes ---------------------------
 # recebe o tamanho da memoria cache (numero total de paginas)
-tamanho_quadro = 2
-tamanho_paginas_cache = 12
+#tamanho_quadro = 2
+tamanho_paginas_cache = raw_input("Digite o número de células da cache: ")
+tamanho_paginas_cache = int(tamanho_paginas_cache)
+#tamanho_paginas_cache = 12
+tipo_mapeamento = raw_input("Digite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo por conjunto\n\n")
+tipo_mapeamento = int(tipo_mapeamento)
+while (tipo_mapeamento != 1 and tipo_mapeamento != 2 and tipo_mapeamento != 3):
+    tipo_mapeamento = raw_input("Valor incorreto!\n\nDigite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo\n\n")
+    tipo_mapeamento = int(tipo_mapeamento)
+
+if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
+    tipo = raw_input("Digite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
+    tipo = int(tipo)
+    while (tipo != 1 and tipo != 2 and tipo != 3 and tipo != 4):
+        tipo = raw_input("Digite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
+        tipo = int(tipo)
+    if (tipo_mapeamento == 3):
+        tamanho_quadro = raw_input("Digite o número de quadros por conjunto: ")
+        tamanho_quadro = int(tamanho_quadro)
+        while (tamanho_quadro < 0 and tamanho_paginas_cache%tamanho_quadro != 0):
+            tamanho_quadro = raw_input("Digite o número de quadros por conjunto: ")
+            tamanho_quadro = int(tamanho_quadro)
+
+arquivo_entrada = raw_input("Digite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executável):")
+enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
+while (enderecos_memoria == False):
+    arquivo_entrada = raw_input("Arquivo não encontrado! Digite o nome do arquivo de entrada novamente: ")
+    enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
+
 tamanho_mp = tamanho_paginas_cache * 100
 dados_cache = instancia_memoria_cache()
 propriedades_memorias()
@@ -328,86 +358,87 @@ propriedades_memorias()
 
 
 # -------------------- Mapeamento direto -------------------------
-'''
-#teste mapeamento direto
-#enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_direto(enderecos_memoria)
-#enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
-mapeamento_direto(enderecos_memoria)
-'''
+if (tipo_mapeamento == 1):
+    #teste mapeamento direto
+    #enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
+    #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+    mapeamento_direto(enderecos_memoria)
+    #enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
+    mapeamento_direto(enderecos_memoria)
+
 # ----------------------------------------------------------------
 
 
 # -------------------- Mapeamento Associativo -------------------------
-# ------------------------------FIFO------------------------------------
+if (tipo_mapeamento == 2):
+    # ------------------------------FIFO------------------------------------
 
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "FIFO")
-enderecos_memoria = gerar_requisicoes_aleatorias(5)
-mapeamento_associativo(enderecos_memoria, "FIFO")
+    if (tipo == 1):
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo(enderecos_memoria, "FIFO")
+        #enderecos_memoria = gerar_requisicoes_aleatorias(5)
+        mapeamento_associativo(enderecos_memoria, "FIFO")
 
 
-# ----------------------------RANDOM------------------------------------
-'''
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "RANDOM")
-enderecos_memoria = gerar_requisicoes_aleatorias(5)
-mapeamento_associativo(enderecos_memoria, "RANDOM")
-'''
+    # ------------------------------LRU------------------------------------
+    if (tipo == 2):
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo(enderecos_memoria, "LRU")
+        #enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1])
+        mapeamento_associativo(enderecos_memoria, "LRU")
 
-# ------------------------------LRU------------------------------------
-'''
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "LRU")
-enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1])
-mapeamento_associativo(enderecos_memoria, "LRU")
-'''
 
-# ------------------------------LFU------------------------------------
-'''
-dados_cache_frequencia = instancia_memoria_cache()
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo(enderecos_memoria, "LFU")
-enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3])
-print(dados_cache_frequencia)
-mapeamento_associativo(enderecos_memoria, "LFU")
-print(dados_cache_frequencia)
-'''
+    # ------------------------------LFU------------------------------------
+    if (tipo == 3):
+        dados_cache_frequencia = instancia_memoria_cache()
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo(enderecos_memoria, "LFU")
+        #enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3])
+        print(dados_cache_frequencia)
+        mapeamento_associativo(enderecos_memoria, "LFU")
+        print(dados_cache_frequencia)
+
+
+    # ----------------------------RANDOM------------------------------------
+    if (tipo == 4):
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo(enderecos_memoria, "RANDOM")
+        #enderecos_memoria = gerar_requisicoes_aleatorias(5)
+        mapeamento_associativo(enderecos_memoria, "RANDOM")
+
+
 
 
 # ------------- Mapeamento Associativo por conjunto --------------------
-# ------------------------------FIFO------------------------------------
-'''
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
-#enderecos_memoria = gerar_requisicoes_aleatorias(5)
-mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
-'''
+if (tipo_mapeamento == 3):
+    # ------------------------------FIFO------------------------------------
+    if (tipo == 1):
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
+        #enderecos_memoria = gerar_requisicoes_aleatorias(5)
+        mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
 
-# ----------------------------RANDOM------------------------------------
-'''
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
-enderecos_memoria = gerar_requisicoes_aleatorias(5)
-mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
-'''
+    # ------------------------------LRU------------------------------------
+    if (tipo == 2):
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
+        #enderecos_memoria = list([1159, 1159, 1159, 1039, enderecos_memoria[5], 1])
+        mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
 
-# ------------------------------LRU------------------------------------
-'''
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
-enderecos_memoria = list([1159, 1159, 1159, 1039, enderecos_memoria[5], 1])
-mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
-'''
+    # ------------------------------LFU------------------------------------
+    if (tipo == 3):
+        dados_cache_frequencia = instancia_memoria_cache()
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
+        #enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1, 3, 4, 5, 1, 4,             2, 3, 3])
+        print(dados_cache_frequencia)
+        mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
+        print(dados_cache_frequencia)
 
-# ------------------------------LFU------------------------------------
-'''
-dados_cache_frequencia = instancia_memoria_cache()
-enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
-mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
-enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3])
-print(dados_cache_frequencia)
-mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
-print(dados_cache_frequencia)
-'''
+    # ----------------------------RANDOM------------------------------------
+    if (tipo == 4):
+        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+        mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
+        #enderecos_memoria = gerar_requisicoes_aleatorias(5)
+        mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
+
