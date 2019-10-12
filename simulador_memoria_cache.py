@@ -256,6 +256,10 @@ def abrir_arquivo_de_acessos_mp(nome):
 		return False
 
 
+def status_arquivo_de_acessos_mp(enderecos):
+	print len(enderecos)
+
+
 def gerar_requisicoes_aleatorias(tamanho_requisicoes):
 	return np.random.randint(low=0, high=tamanho_paginas_cache*3, size=tamanho_requisicoes)
 
@@ -290,25 +294,55 @@ def status_cache_operacoes():
 # ---------------------- Configuracoes ---------------------------
 
 tamanho_paginas_cache = raw_input("Digite o número de páginas da cache: ")
-tamanho_paginas_cache = int(tamanho_paginas_cache)
+try:
+    tamanho_paginas_cache = int(tamanho_paginas_cache)
+except:
+    tamanho_paginas_cache = 0
+while (tamanho_paginas_cache<=0):
+    tamanho_paginas_cache = raw_input("Digite o número de páginas da cache: ")
+    try:
+        tamanho_paginas_cache = int(tamanho_paginas_cache)
+    except:
+        tamanho_paginas_cache = 0
+
 tipo_mapeamento = raw_input("Digite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo por conjunto\n\n")
-tipo_mapeamento = int(tipo_mapeamento)
+try:
+    tipo_mapeamento = int(tipo_mapeamento)
+except:
+    print
 while (tipo_mapeamento != 1 and tipo_mapeamento != 2 and tipo_mapeamento != 3):
     tipo_mapeamento = raw_input("Valor incorreto!\n\nDigite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo\n\n")
-    tipo_mapeamento = int(tipo_mapeamento)
+    try:
+        tipo_mapeamento = int(tipo_mapeamento)
+    except:
+        print
 
 if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
-    tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
-    tipo = int(tipo)
-    while (tipo != 1 and tipo != 2 and tipo != 3 and tipo != 4):
-        tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
-        tipo = int(tipo)
-    if (tipo_mapeamento == 3):
-        tamanho_quadro = raw_input("\nDigite o número de quadros por conjunto: ")
-        tamanho_quadro = int(tamanho_quadro)
-        while (tamanho_quadro < 0 or tamanho_paginas_cache%tamanho_quadro != 0):
-            tamanho_quadro = raw_input("\nNúmero de quadros não multiplo do número de células da memória cache! Digite outro número de quadros por conjunto: ")
-            tamanho_quadro = int(tamanho_quadro)
+	tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
+	try:
+		tipo = int(tipo)
+	except:
+		print
+	while (tipo != 1 and tipo != 2 and tipo != 3 and tipo != 4):
+		tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
+        try:
+            tipo = int(tipo)
+        except:
+            print
+
+	if (tipo_mapeamento == 3):
+		tamanho_quadro = raw_input("\nDigite o número de quadros por conjunto: ")
+		try:
+			tamanho_quadro = int(tamanho_quadro)
+		except:
+			print
+
+		while (tamanho_quadro < 0 or tamanho_paginas_cache%tamanho_quadro != 0):
+			tamanho_quadro = raw_input("\nNúmero de quadros não multiplo do número de células da memória cache! Digite outro número de quadros por conjunto: ")
+			try:
+				tamanho_quadro = int(tamanho_quadro)
+			except:
+				print
 
 arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executável. Exemplo: 'nome_do_arquivo.txt'): ")
 enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
@@ -316,6 +350,7 @@ while (enderecos_memoria == False):
     arquivo_entrada = raw_input("\nArquivo não encontrado! Digite o nome do arquivo de entrada novamente: ")
     enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 
+#status_arquivo_de_acessos_mp(enderecos_memoria)
 tamanho_mp = tamanho_paginas_cache * 100
 dados_cache = instancia_memoria_cache()
 propriedades_memorias()
@@ -324,7 +359,7 @@ propriedades_memorias()
 
 # -------------------- Mapeamento direto -------------------------
 if (tipo_mapeamento == 1):
-    #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache)
+    #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
     mapeamento_direto(enderecos_memoria)
 
 # ----------------------------------------------------------------
