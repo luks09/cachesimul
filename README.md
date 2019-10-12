@@ -4,7 +4,7 @@
 
 ### REQUISITOS:
 
--> Ter um Python instalado com versão abaixo da 3;
+-> Python versão 2.7 instalado;
 
 ### COMO EXECUTAR:
 
