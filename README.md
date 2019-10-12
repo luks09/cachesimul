@@ -1,16 +1,16 @@
 # memsimul
 
-##Simulador de substituição de memória cache
+## Simulador de substituição de memória cache
 
-###REQUISITOS:
+### REQUISITOS:
 
 -> Ter um Python instalado com versão abaixo da 3;
 
-###COMO EXECUTAR:
+### COMO EXECUTAR:
 
 -> Basta clicar duas vezes no arquivo simulador_de_memoria_cache.py para executar o programa
 
-###TUTORIAL:
+### TUTORIAL:
 
 1 - Após os dois cliques no arquivo simulador_de_memoria_cache.py, uma janela surgirá com a mensagem "Digite o numero de paginas da cache: ", pedindo pra que o número de paginas da memória cache seja preenchido. O valor deve ser um inteiro;
 
@@ -46,7 +46,7 @@ Digite o algoritmo:
 
 6 - Ao fim do preenchimento das informações, será executado o mapeamento escolhido na configuração informada. A cada solicitação, é apresentado o estado da cache, a solicitacao de endereco específica e também se aconteceu um cache-hit ou cache-miss. 
     
-###EXEMPLOS DE UTILIZAÇÃO:
+### EXEMPLOS DE UTILIZAÇÃO:
 
 #### *MAPEAMENTO DIRETO:
 
