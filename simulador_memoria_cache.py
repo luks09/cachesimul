@@ -58,6 +58,8 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 
 	if (tipo == "FIFO"):
 
+		contador_fifo = 0
+
 		while (contador < len(enderecos_solicitados)):
 			if (enderecos_solicitados[contador] in dados_cache):
 				print "CACHE-HIT - Os dados do endereco %d da memoria ja estavam na memoria cache" % enderecos_solicitados[contador]
@@ -68,8 +70,11 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 				if (None in dados_cache):
 					dados_cache[dados_cache.index(None)] = enderecos_solicitados[contador]
 				else:
-					dados_cache.pop(0)
-					dados_cache.append(enderecos_solicitados[contador])
+					dados_cache.pop(contador_fifo)
+					dados_cache.insert(contador_fifo, enderecos_solicitados[contador])
+					contador_fifo += 1
+					if (contador_fifo == len(dados_cache)):
+						contador_fifo = 0
 			contador += 1
 			status_cache_operacoes()
 
@@ -148,8 +153,10 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 	if (tipo == "FIFO"):
 
+		contador_fifo = np.zeros(tamanho_quadro, dtype=int)
+
 		while (contador < len(enderecos_solicitados)):
-			conjunto = enderecos_solicitados[contador]%tamanho_paginas_cache/tamanho_quadro
+			conjunto = enderecos_solicitados[contador]%tamanho_quadro
 			#print enderecos_solicitados[contador]
 			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto*tamanho_quadro:(conjunto+1)*tamanho_quadro]):
@@ -161,15 +168,18 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 				if (None in dados_cache[conjunto*tamanho_quadro:(conjunto+1)*tamanho_quadro]):
 					dados_cache[conjunto*tamanho_quadro+dados_cache[conjunto*tamanho_quadro:(conjunto+1)*tamanho_quadro].index(None)] = enderecos_solicitados[contador]
 				else:
-					dados_cache.pop(conjunto*tamanho_quadro)
-					dados_cache.insert((conjunto+1)*tamanho_quadro-1,enderecos_solicitados[contador])
+					dados_cache.pop(conjunto*tamanho_quadro+contador_fifo[conjunto])
+					dados_cache.insert(conjunto*tamanho_quadro+contador_fifo[conjunto],enderecos_solicitados[contador])
+					contador_fifo[conjunto] += 1
+					if (contador_fifo[conjunto] == tamanho_quadro):
+						contador_fifo[conjunto] = 0
 			contador += 1
 			status_cache_operacoes()
 
 	if (tipo == "LRU"):
 
 		while (contador < len(enderecos_solicitados)):
-			conjunto = enderecos_solicitados[contador] % tamanho_paginas_cache / tamanho_quadro
+			conjunto = enderecos_solicitados[contador] % tamanho_quadro
 			#print enderecos_solicitados[contador]
 			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
@@ -193,7 +203,7 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 	if (tipo == "LFU"):
 
 		while (contador < len(enderecos_solicitados)):
-			conjunto = enderecos_solicitados[contador] % tamanho_paginas_cache / tamanho_quadro
+			conjunto = enderecos_solicitados[contador] % tamanho_quadro
 			#print enderecos_solicitados[contador]
 			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
@@ -219,7 +229,7 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 	if (tipo == "RANDOM"):
 
 		while (contador < len(enderecos_solicitados)):
-			conjunto = enderecos_solicitados[contador] % tamanho_paginas_cache / tamanho_quadro
+			conjunto = enderecos_solicitados[contador] % tamanho_quadro
 			#print enderecos_solicitados[contador]
 			#print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
@@ -376,9 +386,11 @@ if (tipo_mapeamento == 2):
 
     # ------------------------------LRU------------------------------------
     if (tipo == 2):
-        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
+		dados_cache_recencia = instancia_memoria_cache()
+		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
         mapeamento_associativo(enderecos_memoria, "LRU")
         #enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1]) #teste
+		print("Recencia das paginas da cache: %s" % dados_cache_recencia)
         #mapeamento_associativo(enderecos_memoria, "LRU") #teste
 
 
@@ -409,11 +421,13 @@ if (tipo_mapeamento == 3):
         mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
 
     # ------------------------------LRU------------------------------------
-    if (tipo == 2):
-        #enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
-        mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
-        #enderecos_memoria = list([1159, 1159, 1159, 1039, enderecos_memoria[5], 1]) #teste
-        #mapeamento_associativo_conjuntos(enderecos_memoria, "LRU") #teste
+	if (tipo == 2):
+		dados_cache_recencia = instancia_memoria_cache()
+		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
+		mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
+		#enderecos_memoria = list([1159, 1159, 1159, 1039, enderecos_memoria[5], 1]) #teste
+		print("Recencia das paginas da cache: %s" % dados_cache_recencia)
+		#mapeamento_associativo_conjuntos(enderecos_memoria, "LRU") #teste
 
     # ------------------------------LFU------------------------------------
     if (tipo == 3):
