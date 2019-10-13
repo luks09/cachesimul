@@ -297,6 +297,8 @@ def propriedades_memoria():
 
 def status_cache():
 	maximo = max(dados_cache)
+	if (maximo == None):
+		maximo = 0
 	digitos = len(str(maximo))
 	print("\nDados da cache: ")
 	for i in range(tamanho_paginas_cache):
@@ -325,6 +327,8 @@ def fracao_acertos():
 def status_cache_operacoes():
 	print("Dados da cache apos a solicitacao: ")
 	maximo = max(dados_cache)
+	if (maximo == None):
+		maximo = 0
 	digitos = len(str(maximo))
 	for i in range(tamanho_paginas_cache):
 		if (i%tamanho_quadro==0 or tipo_mapeamento == 1):
@@ -348,7 +352,7 @@ def status_operacao(endereco):
 	print("Dados do endereco %d da memoria principal foram solicitados!"%endereco)
 
 
-print "-------------MEMSIMUL-------------"
+print "-------------CACHESIMUL-------------"
 print "----Simulador de memoria Cache----\n"
 
 # ---------------------- Configuracoes ---------------------------

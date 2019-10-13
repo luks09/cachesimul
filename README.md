@@ -52,7 +52,7 @@ Digite o algoritmo:
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -369,7 +369,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -611,7 +611,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -853,7 +853,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -1095,7 +1095,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -1339,7 +1339,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -1615,7 +1615,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -1891,7 +1891,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
@@ -2167,7 +2167,7 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
--------------MEMSIMUL-------------
+-------------CACHESIMUL-------------
 
 ----Simulador de memória Cache----
 
