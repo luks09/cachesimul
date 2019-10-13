@@ -1373,9 +1373,11 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
+D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
+
 -------------CACHESIMUL-------------
 
-----Simulador de memória Cache----
+----Simulador de memoria Cache----
 
 
 
@@ -1415,7 +1417,7 @@ Digite o algoritmo:
 
 
 
-Digite o numero de quadros por conjunto: 2
+Digite a quantidade de conjuntos: 2
 
 
 
@@ -1431,9 +1433,9 @@ Dados da cache:
 
 
 
-|     - |     - |
+|  - |  - |
 
-|     - |     - | 
+|  - |  - | 
 
 
 
@@ -1649,9 +1651,11 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
+D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
+
 -------------CACHESIMUL-------------
 
-----Simulador de memória Cache----
+----Simulador de memoria Cache----
 
 
 
@@ -1691,7 +1695,7 @@ Digite o algoritmo:
 
 
 
-Digite o numero de quadros por conjunto: 2
+Digite a quantidade de conjuntos: 2
 
 
 
@@ -1707,9 +1711,9 @@ Dados da cache:
 
 
 
-|     - |     - |
+|  - |  - |
 
-|     - |     - | 
+|  - |  - | 
 
 
 
@@ -1925,9 +1929,11 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
+D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
+
 -------------CACHESIMUL-------------
 
-----Simulador de memória Cache----
+----Simulador de memoria Cache----
 
 
 
@@ -1967,7 +1973,7 @@ Digite o algoritmo:
 
 
 
-Digite o numero de quadros por conjunto: 2
+Digite a quantidade de conjuntos: 2
 
 
 
@@ -1983,9 +1989,9 @@ Dados da cache:
 
 
 
-|     - |     - |
+|  - |  - |
 
-|     - |     - | 
+|  - |  - | 
 
 
 
@@ -2201,9 +2207,11 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
+D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
+
 -------------CACHESIMUL-------------
 
-----Simulador de memória Cache----
+----Simulador de memoria Cache----
 
 
 
@@ -2243,7 +2251,7 @@ Digite o algoritmo:
 
 
 
-Digite o numero de quadros por conjunto: 2
+Digite a quantidade de conjuntos: 2
 
 
 
@@ -2259,9 +2267,9 @@ Dados da cache:
 
 
 
-|     - |     - |
+|  - |  - |
 
-|     - |     - | 
+|  - |  - | 
 
 
 
@@ -2399,7 +2407,7 @@ Dados da cache apos a solicitacao:
 
 
 
-|  4 |  8 |
+|  2 |  8 |
 
 |  3 |  5 | 
 
@@ -2413,7 +2421,7 @@ Dados da cache apos a solicitacao:
 
 
 
-|  8 |  6 |
+|  2 |  6 |
 
 |  3 |  5 | 
 
@@ -2427,7 +2435,7 @@ Dados da cache apos a solicitacao:
 
 
 
-|   6 |  10 |
+|   2 |  10 |
 
 |   3 |   5 | 
 
@@ -2435,13 +2443,13 @@ Dados da cache apos a solicitacao:
 
 Dados do endereco 2 da memoria principal foram solicitados!
 
-CACHE-MISS - Os dados do endereco 2 da memoria principal nao estavam na memoria cache
+CACHE-HIT - Os dados do endereco 2 da memoria principal ja estavam na memoria cache
 
 Dados da cache apos a solicitacao: 
 
 
 
-|  10 |   2 |
+|   2 |  10 |
 
 |   3 |   5 | 
 
@@ -2455,17 +2463,17 @@ Dados da cache apos a solicitacao:
 
 
 
-|  10 |   2 |
+|   2 |  10 |
 
 |   3 |   1 | 
 
 
 
-Acertos: 3
+Acertos: 4
 
-Erros: 11
+Erros: 10
 
-Fracao de acertos: 21.43 %
+Fracao de acertos: 28.57 %
 
 
 
