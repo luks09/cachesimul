@@ -293,14 +293,12 @@ def instancia_memoria_cache():
 
 def propriedades_memoria():
 	print("O tamanho da cache e de " + str(len(dados_cache)) + " paginas")
-	#print("O tamanho da memoria principal e de " + str(tamanho_mp))
 	print
 
 
 def status_cache():
 	maximo = max(dados_cache)
 	digitos = len(str(maximo))
-	#print("\nDados da cache: " + str(dados_cache))
 	print("\nDados da cache: ")
 	for i in range(tamanho_paginas_cache):
 		if (i%tamanho_quadro==0 or tipo_mapeamento == 1):
@@ -316,8 +314,6 @@ def status_cache():
 		for espaco_branco in range(espaco+1):
 			sys.stdout.write(" ")
 		sys.stdout.write(str(valor)+" ")
-		#for espaco_branco in range(espaco):
-		#	sys.stdout.write(" ")
 	sys.stdout.write("| \n\n")
 
 
@@ -328,12 +324,9 @@ def fracao_acertos():
 
 
 def status_cache_operacoes():
-	#print("Dados da cache: apos a operacao: " + str(dados_cache))
 	print("Dados da cache apos a solicitacao: ")
 	maximo = max(dados_cache)
 	digitos = len(str(maximo))
-	#print("\nDados da cache: " + str(dados_cache))
-	#print("\nDados da cache: ")
 	for i in range(tamanho_paginas_cache):
 		if (i%tamanho_quadro==0 or tipo_mapeamento == 1):
 			if (i != 0):
@@ -349,8 +342,6 @@ def status_cache_operacoes():
 		for espaco_branco in range(espaco+1):
 			sys.stdout.write(" ")
 		sys.stdout.write(str(valor)+" ")
-		#for espaco_branco in range(espaco):
-		#	sys.stdout.write(" ")
 	sys.stdout.write("| \n\n")
 
 
@@ -420,9 +411,6 @@ while (enderecos_memoria == False):
 	arquivo_entrada = raw_input("\nArquivo nao encontrado! Digite o nome do arquivo de entrada novamente: ")
 	enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 
-
-#enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
-#status_arquivo_de_acessos_mp(enderecos_memoria)
 tamanho_mp = tamanho_paginas_cache * 100
 dados_cache = instancia_memoria_cache()
 propriedades_memoria()
@@ -431,10 +419,8 @@ propriedades_memoria()
 
 # -------------------- Mapeamento direto -------------------------
 if (tipo_mapeamento == 1):
-	#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 	mapeamento_direto(enderecos_memoria)
 
-# ----------------------------------------------------------------
 
 
 # -------------------- Mapeamento Associativo -------------------------
@@ -442,35 +428,23 @@ if (tipo_mapeamento == 2):
 	# ------------------------------FIFO------------------------------------
 
 	if (tipo == 1):
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo(enderecos_memoria, "FIFO")
 
 
 	# ------------------------------LRU------------------------------------
 	if (tipo == 2):
 		dados_cache_recencia = instancia_memoria_cache()
-		#dados_cache_recencia = instancia_memoria_cache()
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo(enderecos_memoria, "LRU")
-		#enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1]) #teste
-		#print("Recencia das paginas da cache: %s" % dados_cache_recencia)
-		#mapeamento_associativo(enderecos_memoria, "LRU") #teste
 
 
 	# ------------------------------LFU------------------------------------
 	if (tipo == 3):
 		dados_cache_frequencia = instancia_memoria_cache()
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo(enderecos_memoria, "LFU")
-		#enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1,3,4,5,1,4,2,3,3]) #teste
-		#print("Frequencia das paginas da cache: %s"%dados_cache_frequencia)
-		#mapeamento_associativo(enderecos_memoria, "LFU")  #teste
-		#print(dados_cache_frequencia)  #teste
 
 
 	# ----------------------------RANDOM------------------------------------
 	if (tipo == 4):
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo(enderecos_memoria, "RANDOM")
 
 
@@ -480,33 +454,20 @@ if (tipo_mapeamento == 2):
 if (tipo_mapeamento == 3):
 	# ------------------------------FIFO------------------------------------
 	if (tipo == 1):
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
 
 	# ------------------------------LRU------------------------------------
 	if (tipo == 2):
 		dados_cache_recencia = instancia_memoria_cache()
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
-		#enderecos_memoria = list([1159, 1159, 1159, 1039, enderecos_memoria[5], 1]) #teste
-		#print("Recencia das paginas da cache: %s" % dados_cache_recencia)
-		#mapeamento_associativo_conjuntos(enderecos_memoria, "LRU") #teste
 
 	# ------------------------------LFU------------------------------------
 	if (tipo == 3):
 		dados_cache_frequencia = instancia_memoria_cache()
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
-		#enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1, 3, 4, 5, 1, 4, 2, 3, 3]) #teste
-		#print("Frequencia das paginas da cache: %s" % dados_cache_frequencia)
-		#mapeamento_associativo_conjuntos(enderecos_memoria, "LFU") #teste
-		#print(dados_cache_frequencia) #teste
 
 	# ----------------------------RANDOM------------------------------------
 	if (tipo == 4):
-		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
 		mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
-		#enderecos_memoria = gerar_requisicoes_aleatorias(5) #teste - gerando requisicoes aleatórias
-		#mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM") #teste
 
 raw_input("Pressione qualquer tecla para finalizar")
