@@ -349,7 +349,7 @@ def status_operacao(endereco):
 
 
 print "-------------MEMSIMUL-------------"
-print "----Simulador de memória Cache----\n"
+print "----Simulador de memoria Cache----\n"
 
 # ---------------------- Configuracoes ---------------------------
 
