@@ -120,7 +120,6 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 					dados_cache_frequencia[dados_cache.index(None)] = 1
 					dados_cache[dados_cache.index(None)] = enderecos_solicitados[contador]
 				else:
-					print dados_cache_frequencia
 					index = dados_cache_frequencia.index(min(dados_cache_frequencia))
 					dados_cache.pop(index)
 					dados_cache.insert(index, enderecos_solicitados[contador])
