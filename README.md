@@ -1,4 +1,4 @@
-# memsimul
+# cachesimul
 
 ## Simulador de substituição de memória cache
 
