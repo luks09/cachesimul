@@ -43,7 +43,6 @@ def mapeamento_direto(enderecos_solicitados):
 			erros += 1
 		status_cache_operacoes()
 	fracao_acertos()
-	status_cache()
 	print
 
 
@@ -149,7 +148,6 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 			status_cache_operacoes()
 
 	fracao_acertos()
-	status_cache()
 	print
 
 
@@ -265,7 +263,6 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 			status_cache_operacoes()
 
 	fracao_acertos()
-	status_cache()
 	print
 
 
@@ -360,6 +357,10 @@ def status_cache_operacoes():
 def status_operacao(endereco):
 	print("Dados do endereco %d da memoria principal foram solicitados!"%endereco)
 
+
+print "-------------MEMSIMUL-------------"
+print "----Simulador de memória Cache----\n"
+
 # ---------------------- Configuracoes ---------------------------
 
 tamanho_paginas_cache = raw_input("Digite o numero de paginas da cache: ")
@@ -420,7 +421,7 @@ while (enderecos_memoria == False):
 	enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 
 
-enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
+#enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
 #status_arquivo_de_acessos_mp(enderecos_memoria)
 tamanho_mp = tamanho_paginas_cache * 100
 dados_cache = instancia_memoria_cache()
