@@ -1373,7 +1373,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------CACHESIMUL-------------
 
@@ -1651,7 +1650,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------CACHESIMUL-------------
 
@@ -1929,7 +1927,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------CACHESIMUL-------------
 
@@ -2207,7 +2204,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------CACHESIMUL-------------
 
