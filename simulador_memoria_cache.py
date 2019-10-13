@@ -413,14 +413,14 @@ if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
 				tamanho_quadro = int(tamanho_quadro)
 			except:
 				print
-'''
+
 arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executavel. Exemplo: 'nome_do_arquivo.txt'): ")
 enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 while (enderecos_memoria == False):
 	arquivo_entrada = raw_input("\nArquivo nao encontrado! Digite o nome do arquivo de entrada novamente: ")
 	enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 
-'''
+
 enderecos_memoria = abrir_arquivo_de_acessos_mp("acessos.txt")
 #status_arquivo_de_acessos_mp(enderecos_memoria)
 tamanho_mp = tamanho_paginas_cache * 100
@@ -451,7 +451,6 @@ if (tipo_mapeamento == 2):
 		dados_cache_recencia = instancia_memoria_cache()
 		#dados_cache_recencia = instancia_memoria_cache()
 		#enderecos_memoria = gerar_requisicoes_aleatorias(tamanho_paginas_cache) #teste - gerando requisicoes aleatórias
-		print "ta aqui"
 		mapeamento_associativo(enderecos_memoria, "LRU")
 		#enderecos_memoria = list([enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[3], enderecos_memoria[5], 1]) #teste
 		#print("Recencia das paginas da cache: %s" % dados_cache_recencia)
