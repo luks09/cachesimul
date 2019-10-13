@@ -52,9 +52,6 @@ Digite o algoritmo:
 
 #----------------------------------------
 
-
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
-
 -------------MEMSIMUL-------------
 
 ----Simulador de memória Cache----
@@ -372,8 +369,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
-
 -------------MEMSIMUL-------------
 
 ----Simulador de memória Cache----
@@ -615,8 +610,6 @@ Pressione qualquer tecla para finalizar
 ##### LRU:
 
 #----------------------------------------
-
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------MEMSIMUL-------------
 
@@ -860,8 +853,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
-
 -------------MEMSIMUL-------------
 
 ----Simulador de memória Cache----
@@ -1103,8 +1094,6 @@ Pressione qualquer tecla para finalizar
 ##### RANDOM:
 
 #----------------------------------------
-
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------MEMSIMUL-------------
 
@@ -1349,8 +1338,6 @@ Pressione qualquer tecla para finalizar
 ##### FIFO:
 
 #----------------------------------------
-
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------MEMSIMUL-------------
 
@@ -1628,8 +1615,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
-
 -------------MEMSIMUL-------------
 
 ----Simulador de memória Cache----
@@ -1906,8 +1891,6 @@ Pressione qualquer tecla para finalizar
 
 #----------------------------------------
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
-
 -------------MEMSIMUL-------------
 
 ----Simulador de memória Cache----
@@ -2183,8 +2166,6 @@ Pressione qualquer tecla para finalizar
 ##### RANDOM:
 
 #----------------------------------------
-
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 
 -------------MEMSIMUL-------------
 
