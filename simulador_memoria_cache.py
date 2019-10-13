@@ -64,7 +64,6 @@ def mapeamento_associativo(enderecos_solicitados, tipo):
 
 		while (contador < len(enderecos_solicitados)):
 			status_operacao(enderecos_solicitados[contador])
-			status_operacao(enderecos_solicitados[contador])
 			if (enderecos_solicitados[contador] in dados_cache):
 				print "CACHE-HIT - Os dados do endereco %d da memoria principal ja estavam na memoria cache" % enderecos_solicitados[contador]
 				acertos += 1
