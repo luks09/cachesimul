@@ -395,19 +395,20 @@ if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
 			print
 
 	if (tipo_mapeamento == 3):
-		tamanho_quadro = raw_input("\nDigite o numero de quadros por conjunto: ")
+		num_conjuntos = raw_input("\nDigite a quantidade de conjuntos: ")
 		try:
-			tamanho_quadro = int(tamanho_quadro)
+			num_conjuntos = int(num_conjuntos)
 		except:
 			print
 
-		while (tamanho_quadro < 0 or tamanho_paginas_cache%tamanho_quadro != 0):
-			tamanho_quadro = raw_input("\nNumero de quadros nao multiplo do numero de celulas da memoria cache! Digite outro numero de quadros por conjunto: ")
+		while (num_conjuntos < 0 or tamanho_paginas_cache%num_conjuntos != 0):
+			num_conjuntos = raw_input("\nNumero de conjuntos nao multiplo do numero de paginas da memoria cache! Digite novamente a quantidade de conjuntos: ")
 			try:
-				tamanho_quadro = int(tamanho_quadro)
+				num_conjuntos = int(num_conjuntos)
 			except:
 				print
 
+		tamanho_quadro = tamanho_paginas_cache/num_conjuntos
 arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executavel. Exemplo: 'nome_do_arquivo.txt'): ")
 enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 while (enderecos_memoria == False):
