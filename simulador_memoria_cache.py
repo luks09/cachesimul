@@ -160,10 +160,11 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 	if (tipo == "FIFO"):
 
-		contador_fifo = np.zeros(tamanho_quadro, dtype=int)
+		contador_fifo = np.zeros(tamanho_paginas_cache/tamanho_quadro, dtype=int)
 
 		while (contador < len(enderecos_solicitados)):
 			conjunto = enderecos_solicitados[contador] % (tamanho_paginas_cache/tamanho_quadro)
+			print conjunto
 			if (enderecos_solicitados[contador] in dados_cache[conjunto*tamanho_quadro:(conjunto+1)*tamanho_quadro]):
 				print "CACHE-HIT - Os dados do endereco %d da memoria ja estavam na memoria cache" % enderecos_solicitados[contador]
 				acertos += 1
@@ -212,6 +213,7 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 		while (contador < len(enderecos_solicitados)):
 			conjunto = enderecos_solicitados[contador] % (tamanho_paginas_cache/tamanho_quadro)
+
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
 				print "CACHE-HIT - Os dados do endereco %d da memoria ja estavam na memoria cache" % enderecos_solicitados[contador]
 				acertos += 1
@@ -317,7 +319,24 @@ def fracao_acertos():
 
 
 def status_cache_operacoes():
-	print("paginas armazenadas na memoria cache apos a operacao: " + str(dados_cache))
+	print("Dados da cache: apos a operacao: " + str(dados_cache))
+	maximo = max(dados_cache)
+	digitos = len(str(maximo)) / 2
+	# print("\nDados da cache: " + str(dados_cache))
+	print("\nDados da cache: ")
+	for i in range(tamanho_paginas_cache):
+		if (i % tamanho_quadro == 0):
+			if (i != 0):
+				sys.stdout.write("|")
+			print
+		sys.stdout.write("| ")
+		espaco = digitos - len(str(dados_cache[i]))
+		for espaco_branco in range(espaco + 1):
+			sys.stdout.write(" ")
+		sys.stdout.write(str(dados_cache[i]) + " ")
+		for espaco_branco in range(espaco):
+			sys.stdout.write(" ")
+	sys.stdout.write("|\n\n")
 
 
 # ---------------------- Configuracoes ---------------------------
