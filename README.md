@@ -392,6 +392,8 @@ FRACAO DE CACHE-HITS: 21.43 %
 
 
 
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
+
 Pressione qualquer tecla para finalizar
 
 
@@ -637,6 +639,8 @@ FRACAO DE CACHE-HITS: 21.43 %
 
 
 
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
+
 Pressione qualquer tecla para finalizar
 
 #----------------------------------------
@@ -878,6 +882,8 @@ CACHE-MISSES: 11
 FRACAO DE CACHE-HITS: 21.43 %
 
 
+
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
 
 Pressione qualquer tecla para finalizar
 
@@ -1121,6 +1127,8 @@ FRACAO DE CACHE-HITS: 35.71 %
 
 
 
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
+
 Pressione qualquer tecla para finalizar
 
 #----------------------------------------
@@ -1362,6 +1370,8 @@ CACHE-MISSES: 12
 FRACAO DE CACHE-HITS: 14.29 %
 
 
+
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
 
 Pressione qualquer tecla para finalizar
 
@@ -1642,6 +1652,8 @@ FRACAO DE CACHE-HITS: 21.43 %
 
 
 
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
+
 Pressione qualquer tecla para finalizar
 
 #----------------------------------------
@@ -1918,6 +1930,8 @@ CACHE-MISSES: 10
 FRACAO DE CACHE-HITS: 28.57 %
 
 
+
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
 
 Pressione qualquer tecla para finalizar
 
@@ -2196,6 +2210,8 @@ FRACAO DE CACHE-HITS: 21.43 %
 
 
 
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
+
 Pressione qualquer tecla para finalizar
 
 #----------------------------------------
@@ -2472,6 +2488,8 @@ CACHE-MISSES: 10
 FRACAO DE CACHE-HITS: 28.57 %
 
 
+
+Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
 
 Pressione qualquer tecla para finalizar
 
