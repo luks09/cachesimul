@@ -507,10 +507,10 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 		if (tipo == 4):
 			mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
 
-	recomecar = raw_input("\nDeseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): ")
+	recomecar = raw_input("\nDeseja executar o programa novamente (sim/ nao) *ARGUMENTO: -naozerarcache): ")
 
 	while (str.lower(recomecar) != "sim" and str(recomecar) != "nao" and str.lower(recomecar).replace(" ","") != "sim-naozerarcache"):
-		recomecar = raw_input("\nErro de comando! Deseja executar o programa novamente (SIM/ NAO) *ARGUMENTO: -naozerarcache: ")
+		recomecar = raw_input("\nErro de comando! Deseja executar o programa novamente (sim/ nao) *ARGUMENTO: -naozerarcache: ")
 
 print
 raw_input("Pressione qualquer tecla para finalizar")
