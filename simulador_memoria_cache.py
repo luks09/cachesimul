@@ -18,7 +18,7 @@ páginas armazenadas na memória cache;
 b. Ao final da execução, a fração de acertos às referências de memória para cada política.
 
 '''
-import numpy as np
+#import numpy as np
 import random
 import sys
 
@@ -162,7 +162,7 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 	if (tipo == "FIFO"):
 
-		contador_fifo = np.zeros(tamanho_paginas_cache/tamanho_quadro, dtype=int)
+		contador_fifo = [0]*(tamanho_paginas_cache/tamanho_quadro)
 
 		while (contador < len(enderecos_solicitados)):
 			status_operacao(enderecos_solicitados[contador])
@@ -189,7 +189,7 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 
 		while (contador < len(enderecos_solicitados)):
 			status_operacao(enderecos_solicitados[contador])
-			
+
 			conjunto = enderecos_solicitados[contador] % (tamanho_paginas_cache/tamanho_quadro)
 			if (enderecos_solicitados[contador] in dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]):
 				print "CACHE-HIT - Os dados do endereco %d da memoria principal ja estavam na memoria cache" % enderecos_solicitados[contador]
@@ -279,14 +279,15 @@ def status_arquivo_de_acessos_mp(enderecos):
 	print len(enderecos)
 
 
-def gerar_requisicoes_aleatorias(tamanho_requisicoes):
-	return np.random.randint(low=0, high=tamanho_paginas_cache*3, size=tamanho_requisicoes)
+#def gerar_requisicoes_aleatorias(tamanho_requisicoes):
+#	return np.random.randint(low=0, high=tamanho_paginas_cache*3, size=tamanho_requisicoes)
 
 
 def instancia_memoria_cache():
-	dados_cache = np.empty((1, tamanho_paginas_cache), object)
-	dados_cache = dados_cache[0]
-	dados_cache = list(dados_cache)
+	#dados_cache = np.empty((1, tamanho_paginas_cache), object)
+	#dados_cache = dados_cache[0]
+	#dados_cache = list(dados_cache)
+	dados_cache = [None]*tamanho_paginas_cache
 	return dados_cache
 
 
