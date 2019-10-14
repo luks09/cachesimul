@@ -384,11 +384,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 3
+CACHE-HITS: 3
 
-Erros: 11
+CACHE-MISSES: 11
 
-Fracao de acertos: 21.43 %
+FRACAO DE CACHE-HITS: 21.43 %
 
 
 
@@ -629,11 +629,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 3
+CACHE-HITS: 3
 
-Erros: 11
+CACHE-MISSES: 11
 
-Fracao de acertos: 21.43 %
+FRACAO DE CACHE-HITS: 21.43 %
 
 
 
@@ -871,11 +871,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 3
+CACHE-HITS: 3
 
-Erros: 11
+CACHE-MISSES: 11
 
-Fracao de acertos: 21.43 %
+FRACAO DE CACHE-HITS: 21.43 %
 
 
 
@@ -1113,11 +1113,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 5
+CACHE-HITS: 5
 
-Erros: 9
+CACHE-MISSES: 9
 
-Fracao de acertos: 35.71 %
+FRACAO DE CACHE-HITS: 35.71 %
 
 
 
@@ -1355,11 +1355,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 2
+CACHE-HITS: 2
 
-Erros: 12
+CACHE-MISSES: 12
 
-Fracao de acertos: 14.29 %
+FRACAO DE CACHE-HITS: 14.29 %
 
 
 
@@ -1634,11 +1634,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 3
+CACHE-HITS: 3
 
-Erros: 11
+CACHE-MISSES: 11
 
-Fracao de acertos: 21.43 %
+FRACAO DE CACHE-HITS: 21.43 %
 
 
 
@@ -1911,11 +1911,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 4
+CACHE-HITS: 4
 
-Erros: 10
+CACHE-MISSES: 10
 
-Fracao de acertos: 28.57 %
+FRACAO DE CACHE-HITS: 28.57 %
 
 
 
@@ -2188,11 +2188,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 3
+CACHE-HITS: 3
 
-Erros: 11
+CACHE-MISSES: 11
 
-Fracao de acertos: 21.43 %
+FRACAO DE CACHE-HITS: 21.43 %
 
 
 
@@ -2465,11 +2465,11 @@ Dados da cache apos a solicitacao:
 
 
 
-Acertos: 4
+CACHE-HITS: 4
 
-Erros: 10
+CACHE-MISSES: 10
 
-Fracao de acertos: 28.57 %
+FRACAO DE CACHE-HITS: 28.57 %
 
 
 

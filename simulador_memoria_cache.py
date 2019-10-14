@@ -283,12 +283,15 @@ def status_arquivo_de_acessos_mp(enderecos):
 #	return np.random.randint(low=0, high=tamanho_paginas_cache*3, size=tamanho_requisicoes)
 
 
-def instancia_memoria_cache():
+def instancia_memoria_cache(inicial=None):
 	#dados_cache = np.empty((1, tamanho_paginas_cache), object)
 	#dados_cache = dados_cache[0]
 	#dados_cache = list(dados_cache)
-	dados_cache = [None]*tamanho_paginas_cache
-	return dados_cache
+	if (inicial == None or inicial==0):
+		dados = [inicial]*tamanho_paginas_cache
+	else:
+		dados = list(inicial)
+	return dados
 
 
 def propriedades_memoria():
@@ -320,9 +323,9 @@ def status_cache():
 
 
 def fracao_acertos():
-	print("Acertos: " + str(acertos))
-	print("Erros: " + str(erros))
-	print "Fracao de acertos: %.2f %%" %((acertos/float((erros+acertos)))*100)
+	print("CACHE-HITS: " + str(acertos))
+	print("CACHE-MISSES: " + str(erros))
+	print "FRACAO DE CACHE-HITS: %.2f %%" %((acertos/float((erros+acertos)))*100)
 
 
 def status_cache_operacoes():
@@ -352,127 +355,162 @@ def status_cache_operacoes():
 def status_operacao(endereco):
 	print("Dados do endereco %d da memoria principal foram solicitados!"%endereco)
 
+recomecar = "sim"
 
-print "-------------CACHESIMUL-------------"
-print "----Simulador de memoria Cache----\n"
+while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == "sim-naozerarcache"):
 
-# ---------------------- Configuracoes ---------------------------
-
-tamanho_paginas_cache = raw_input("Digite o numero de paginas da cache: ")
-try:
-	tamanho_paginas_cache = int(tamanho_paginas_cache)
-except:
-	tamanho_paginas_cache = 0
-while (tamanho_paginas_cache<=0):
-	tamanho_paginas_cache = raw_input("Digite o numero de paginas da cache: ")
-	try:
-		tamanho_paginas_cache = int(tamanho_paginas_cache)
-	except:
+	if str.lower(recomecar).replace(" ", "") == "sim":
 		tamanho_paginas_cache = 0
-tamanho_quadro = tamanho_paginas_cache
-tipo_mapeamento = raw_input("Digite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo por conjunto\n\n")
-try:
-	tipo_mapeamento = int(tipo_mapeamento)
-except:
-	print
-while (tipo_mapeamento != 1 and tipo_mapeamento != 2 and tipo_mapeamento != 3):
-	tipo_mapeamento = raw_input("Valor incorreto!\n\nDigite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo\n\n")
+		tamanho_quadro = 0
+		dados_cache = instancia_memoria_cache()
+		dados_cache_recencia = instancia_memoria_cache()
+		dados_cache_frequencia = instancia_memoria_cache()
+	else:
+		tipo = ""
+		tipo_mapeamento = ""
+
+	print "-------------CACHESIMUL-------------"
+	print "----Simulador de memoria Cache----\n"
+
+	# ---------------------- Configuracoes ---------------------------
+
+	if (recomecar == "sim"):
+		tamanho_paginas_cache = raw_input("Digite o numero de paginas da cache: ")
+		try:
+			tamanho_paginas_cache = int(tamanho_paginas_cache)
+		except:
+			tamanho_paginas_cache = 0
+		while (tamanho_paginas_cache<=0):
+			tamanho_paginas_cache = raw_input("Numero de paginas incorreto! Digite o numero de paginas da cache: ")
+			try:
+				tamanho_paginas_cache = int(tamanho_paginas_cache)
+			except:
+				tamanho_paginas_cache = 0
+		tamanho_quadro = tamanho_paginas_cache
+	tipo_mapeamento = raw_input("Digite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo por conjunto\n\n")
 	try:
 		tipo_mapeamento = int(tipo_mapeamento)
 	except:
 		print
+	while (tipo_mapeamento != 1 and tipo_mapeamento != 2 and tipo_mapeamento != 3):
+		tipo_mapeamento = raw_input("Valor incorreto!\n\nDigite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo\n\n")
+		try:
+			tipo_mapeamento = int(tipo_mapeamento)
+		except:
+			print
 
-if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
-	tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
-	try:
-		tipo = int(tipo)
-	except:
-		print
-	while (tipo != 1 and tipo != 2 and tipo != 3 and tipo != 4):
+	if (tipo_mapeamento == 2 or tipo_mapeamento == 3):
 		tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
 		try:
 			tipo = int(tipo)
 		except:
 			print
-
-	if (tipo_mapeamento == 3):
-		num_conjuntos = raw_input("\nDigite a quantidade de conjuntos: ")
-		try:
-			num_conjuntos = int(num_conjuntos)
-		except:
-			print
-
-		while (num_conjuntos < 0 or tamanho_paginas_cache%num_conjuntos != 0):
-			num_conjuntos = raw_input("\nNumero de conjuntos nao multiplo do numero de paginas da memoria cache! Digite novamente a quantidade de conjuntos: ")
+		while (tipo != 1 and tipo != 2 and tipo != 3 and tipo != 4):
+			tipo = raw_input("\nDigite o algoritmo: \n\n1 - FIFO\n2 - LRU\n3 - LFU\n4 - RANDOM\n\n")
 			try:
+				tipo = int(tipo)
+			except:
+				print
+
+		if (tipo_mapeamento == 3):
+			try:
+				num_conjuntos = raw_input("\nDigite a quantidade de conjuntos: ")
 				num_conjuntos = int(num_conjuntos)
 			except:
 				print
 
-		tamanho_quadro = tamanho_paginas_cache/num_conjuntos
-arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executavel. Exemplo: 'nome_do_arquivo.txt'): ")
-enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
-while (enderecos_memoria == False):
-	arquivo_entrada = raw_input("\nArquivo nao encontrado! Digite o nome do arquivo de entrada novamente: ")
+			while (num_conjuntos < 0 or tamanho_paginas_cache%num_conjuntos != 0):
+				try:
+					num_conjuntos = raw_input("\nNumero de conjuntos nao multiplo do numero de paginas da memoria cache! Digite novamente a quantidade de conjuntos: ")
+					num_conjuntos = int(num_conjuntos)
+				except:
+					print
+
+			tamanho_quadro = tamanho_paginas_cache/num_conjuntos
+	arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executavel. Exemplo: 'nome_do_arquivo.txt'): ")
 	enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
+	while (enderecos_memoria == False):
+		arquivo_entrada = raw_input("\nArquivo nao encontrado! Digite o nome do arquivo de entrada novamente: ")
+		enderecos_memoria = abrir_arquivo_de_acessos_mp(arquivo_entrada)
 
-tamanho_mp = tamanho_paginas_cache * 100
-dados_cache = instancia_memoria_cache()
-propriedades_memoria()
-# ----------------------------------------------------------------
+	tamanho_mp = tamanho_paginas_cache * 100
 
+	if (recomecar == "sim"):
+		dados_cache = instancia_memoria_cache()
+	propriedades_memoria()
+	# ----------------------------------------------------------------
 
-# -------------------- Mapeamento direto -------------------------
-if (tipo_mapeamento == 1):
-	mapeamento_direto(enderecos_memoria)
+	#arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executavel. Exemplo: 'nome_do_arquivo.txt'): ")
 
+	# -------------------- Mapeamento direto -------------------------
+	if (tipo_mapeamento == 1):
+		mapeamento_direto(enderecos_memoria)
 
+	# -------------------- Mapeamento Associativo -------------------------
+	if (tipo_mapeamento == 2):
+		# ------------------------------FIFO------------------------------------
 
-# -------------------- Mapeamento Associativo -------------------------
-if (tipo_mapeamento == 2):
-	# ------------------------------FIFO------------------------------------
+		if (tipo == 1):
+			mapeamento_associativo(enderecos_memoria, "FIFO")
 
-	if (tipo == 1):
-		mapeamento_associativo(enderecos_memoria, "FIFO")
+		# ------------------------------LRU------------------------------------
+		if (tipo == 2):
+			if (recomecar == "sim"):
+				dados_cache_recencia = instancia_memoria_cache()
+			elif not dados_cache_recencia:
+				dados_cache_recencia = instancia_memoria_cache(inicial=dados_cache)
+				if dados_cache_frequencia:
+					del dados_cache_frequencia
+			mapeamento_associativo(enderecos_memoria, "LRU")
 
+		# ------------------------------LFU------------------------------------
+		if (tipo == 3):
+			if (recomecar == "sim"):
+				dados_cache_frequencia = instancia_memoria_cache()
+			elif not dados_cache_frequencia:
+				dados_cache_frequencia = instancia_memoria_cache(inicial=0)
+				if dados_cache_recencia:
+					del dados_cache_recencia
+			mapeamento_associativo(enderecos_memoria, "LFU")
 
-	# ------------------------------LRU------------------------------------
-	if (tipo == 2):
-		dados_cache_recencia = instancia_memoria_cache()
-		mapeamento_associativo(enderecos_memoria, "LRU")
+		# ----------------------------RANDOM------------------------------------
+		if (tipo == 4):
+			mapeamento_associativo(enderecos_memoria, "RANDOM")
 
+	# ------------- Mapeamento Associativo por conjunto --------------------
+	if (tipo_mapeamento == 3):
+		# ------------------------------FIFO------------------------------------
+		if (tipo == 1):
+			mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
 
-	# ------------------------------LFU------------------------------------
-	if (tipo == 3):
-		dados_cache_frequencia = instancia_memoria_cache()
-		mapeamento_associativo(enderecos_memoria, "LFU")
+		# ------------------------------LRU------------------------------------
+		if (tipo == 2):
+			if (recomecar == "sim"):
+				dados_cache_recencia = instancia_memoria_cache()
+			elif not dados_cache_recencia:
+				dados_cache_recencia = instancia_memoria_cache(inicial=dados_cache)
+				if dados_cache_frequencia:
+					del dados_cache_frequencia
+			mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
 
+		# ------------------------------LFU------------------------------------
+		if (tipo == 3):
+			if (recomecar == "sim"):
+				dados_cache_frequencia = instancia_memoria_cache()
+			elif not dados_cache_frequencia:
+				dados_cache_frequencia = instancia_memoria_cache(inicial=0)
+				if dados_cache_recencia:
+					del dados_cache_recencia
+			mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
 
-	# ----------------------------RANDOM------------------------------------
-	if (tipo == 4):
-		mapeamento_associativo(enderecos_memoria, "RANDOM")
+		# ----------------------------RANDOM------------------------------------
+		if (tipo == 4):
+			mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
 
+	recomecar = raw_input("\nDeseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): ")
 
+	while (str.lower(recomecar) != "sim" and str(recomecar) != "nao" and str.lower(recomecar).replace(" ","") != "sim-naozerarcache"):
+		recomecar = raw_input("\nErro de comando! Deseja executar o programa novamente (SIM/ NAO) *ARGUMENTO: -naozerarcache: ")
 
-
-# ------------- Mapeamento Associativo por conjunto --------------------
-if (tipo_mapeamento == 3):
-	# ------------------------------FIFO------------------------------------
-	if (tipo == 1):
-		mapeamento_associativo_conjuntos(enderecos_memoria, "FIFO")
-
-	# ------------------------------LRU------------------------------------
-	if (tipo == 2):
-		dados_cache_recencia = instancia_memoria_cache()
-		mapeamento_associativo_conjuntos(enderecos_memoria, "LRU")
-
-	# ------------------------------LFU------------------------------------
-	if (tipo == 3):
-		dados_cache_frequencia = instancia_memoria_cache()
-		mapeamento_associativo_conjuntos(enderecos_memoria, "LFU")
-
-	# ----------------------------RANDOM------------------------------------
-	if (tipo == 4):
-		mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
-
+print
 raw_input("Pressione qualquer tecla para finalizar")
