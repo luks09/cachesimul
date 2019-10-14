@@ -18,7 +18,7 @@ páginas armazenadas na memória cache;
 b. Ao final da execução, a fração de acertos às referências de memória para cada política.
 
 '''
-#import numpy as np
+from os import system, name
 import random
 import sys
 
@@ -279,7 +279,16 @@ def status_arquivo_de_acessos_mp(enderecos):
 	print len(enderecos)
 
 
-#def gerar_requisicoes_aleatorias(tamanho_requisicoes):
+def limpa_tela():
+	# windows
+	if name == 'nt':
+		_ = system('cls')
+
+	# mac e linux
+	else:
+		_ = system('clear')
+
+	#def gerar_requisicoes_aleatorias(tamanho_requisicoes):
 #	return np.random.randint(low=0, high=tamanho_paginas_cache*3, size=tamanho_requisicoes)
 
 
@@ -360,6 +369,7 @@ recomecar = "sim"
 while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == "sim-naozerarcache"):
 
 	if str.lower(recomecar).replace(" ", "") == "sim":
+		limpa_tela()
 		tamanho_paginas_cache = 0
 		tamanho_quadro = 0
 		dados_cache = instancia_memoria_cache()
@@ -508,9 +518,10 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 			mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
 
 	recomecar = raw_input("\nDeseja executar o programa novamente (sim/ nao) *ARGUMENTO: -naozerarcache): ")
-
+	print
 	while (str.lower(recomecar) != "sim" and str(recomecar) != "nao" and str.lower(recomecar).replace(" ","") != "sim-naozerarcache"):
 		recomecar = raw_input("\nErro de comando! Deseja executar o programa novamente (sim/ nao) *ARGUMENTO: -naozerarcache: ")
+		print
 
 print
 raw_input("Pressione qualquer tecla para finalizar")
