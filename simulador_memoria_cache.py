@@ -427,14 +427,14 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 				num_conjuntos = raw_input("\nDigite a quantidade de conjuntos: ")
 				num_conjuntos = int(num_conjuntos)
 			except:
-				print
+				num_conjuntos = -1
 
 			while (num_conjuntos < 0 or tamanho_paginas_cache%num_conjuntos != 0):
 				try:
 					num_conjuntos = raw_input("\nNumero de conjuntos nao multiplo do numero de paginas da memoria cache! Digite novamente a quantidade de conjuntos: ")
 					num_conjuntos = int(num_conjuntos)
 				except:
-					print
+					num_conjuntos = -1
 
 			tamanho_quadro = tamanho_paginas_cache/num_conjuntos
 	arquivo_entrada = raw_input("\nDigite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que este executavel. Exemplo: 'nome_do_arquivo.txt'): ")
