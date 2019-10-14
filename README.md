@@ -4,7 +4,7 @@
 
 ### REQUISITOS:
 
--> Python versão 2.7 instalado com numpy;
+-> Python versão 2.7 instalado;
 
 ### COMO EXECUTAR:
 
