@@ -365,7 +365,8 @@ def status_operacao(endereco):
 	print("Dados do endereco %d da memoria principal foram solicitados!"%endereco)
 
 recomecar = "sim"
-
+num_conjuntos = 1
+num_conjuntos_ant = 0
 while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == "sim-naozerarcache"):
 
 	if str.lower(recomecar).replace(" ", "") == "sim":
@@ -426,6 +427,8 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 			try:
 				num_conjuntos = raw_input("\nDigite a quantidade de conjuntos: ")
 				num_conjuntos = int(num_conjuntos)
+				if (num_conjuntos == 0):
+					num_conjuntos = -1
 			except:
 				num_conjuntos = -1
 
@@ -433,6 +436,8 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 				try:
 					num_conjuntos = raw_input("\nNumero de conjuntos nao multiplo do numero de paginas da memoria cache! Digite novamente a quantidade de conjuntos: ")
 					num_conjuntos = int(num_conjuntos)
+					if (num_conjuntos == 0):
+						num_conjuntos = -1
 				except:
 					num_conjuntos = -1
 
@@ -456,18 +461,23 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 	if (tipo_mapeamento == 1):
 		mapeamento_direto(enderecos_memoria)
 
+
 	# -------------------- Mapeamento Associativo -------------------------
 	if (tipo_mapeamento == 2):
 		# ------------------------------FIFO------------------------------------
 
 		if (tipo == 1):
 			mapeamento_associativo(enderecos_memoria, "FIFO")
+			if dados_cache_frequencia:
+					del dados_cache_frequencia
+			if dados_cache_recencia:
+					del dados_cache_recencia
 
 		# ------------------------------LRU------------------------------------
 		if (tipo == 2):
 			if (recomecar == "sim"):
 				dados_cache_recencia = instancia_memoria_cache()
-			elif not dados_cache_recencia:
+			elif not dados_cache_recencia or num_conjuntos != num_conjuntos_ant:
 				dados_cache_recencia = instancia_memoria_cache(inicial=dados_cache)
 				if dados_cache_frequencia:
 					del dados_cache_frequencia
@@ -497,7 +507,7 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 		if (tipo == 2):
 			if (recomecar == "sim"):
 				dados_cache_recencia = instancia_memoria_cache()
-			elif not dados_cache_recencia:
+			elif not dados_cache_recencia or num_conjuntos != num_conjuntos_ant:
 				dados_cache_recencia = instancia_memoria_cache(inicial=dados_cache)
 				if dados_cache_frequencia:
 					del dados_cache_frequencia
@@ -517,6 +527,7 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 		if (tipo == 4):
 			mapeamento_associativo_conjuntos(enderecos_memoria, "RANDOM")
 
+	num_conjuntos_ant = num_conjuntos
 	recomecar = raw_input("\nDeseja executar o programa novamente (sim/ nao) *ARGUMENTO: -naozerarcache): ")
 	print
 	while (str.lower(recomecar) != "sim" and str(recomecar) != "nao" and str.lower(recomecar).replace(" ","") != "sim-naozerarcache"):
