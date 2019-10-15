@@ -6,10 +6,6 @@
 
 * Python 2.7.x.
 
-### IDE UTILIZADA:
-
-* PyCharm 2018.1.3 (Community Edition).
-
 ### REQUISITOS:
 
 * Python versão 2.7.x instalado;
