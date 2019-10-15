@@ -280,14 +280,16 @@ def status_arquivo_de_acessos_mp(enderecos):
 
 
 def limpa_tela():
-	# windows
-	if name == 'nt':
-		_ = system('cls')
+	try:
+		# windows
+		if name == 'nt':
+			_ = system('cls')
 
-	# mac e linux
-	else:
-		_ = system('clear')
-
+		# mac e linux
+		else:
+			_ = system('clear')
+	except:
+		print
 	#def gerar_requisicoes_aleatorias(tamanho_requisicoes):
 #	return np.random.randint(low=0, high=tamanho_paginas_cache*3, size=tamanho_requisicoes)
 
