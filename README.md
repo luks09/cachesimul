@@ -70,7 +70,6 @@ acessos.txt:
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -239,7 +238,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -369,7 +367,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -499,7 +496,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -629,7 +625,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -761,7 +756,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -908,7 +902,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -1055,7 +1048,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
@@ -1202,7 +1194,6 @@ Pressione qualquer tecla para finalizar
 
 ```
 
-D:\Miniconda_27_32\python.exe D:/memsimul/simulador_memoria_cache.py
 -------------CACHESIMUL-------------
 ----Simulador de memoria Cache----
 
