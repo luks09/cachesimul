@@ -19,12 +19,6 @@
 #### No Windows:
 * Basta clicar duas vezes no arquivo simulador_de_memoria_cache.py para executar o programa
 
-#### No Linux:
-* Basta clicar duas vezes no arquivo simulador_de_memoria_cache.py para executar o programa
-
-#### No MacOS:
-* Basta clicar duas vezes no arquivo simulador_de_memoria_cache.py para executar o programa
-
 ### TUTORIAL:
 
 1. Após os dois cliques no arquivo simulador_de_memoria_cache.py, uma janela surgirá com a mensagem "Digite o numero de paginas da cache: ", pedindo pra que o número de paginas da memória cache seja preenchido. O valor deve ser um inteiro;
