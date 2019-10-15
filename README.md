@@ -68,7 +68,7 @@ acessos.txt:
 
 #### *MAPEAMENTO DIRETO:
 
-#----------------------------------------
+```
 
 -------------CACHESIMUL-------------
 
@@ -381,7 +381,7 @@ Deseja executar o programa novamente (SIM/ NAO) (OPÇÕES: -naozerarcache): nao
 Pressione qualquer tecla para finalizar
 
 
-#----------------------------------------
+```
 
 #### *MAPEAMENTO ASSOCIATIVO:
 
