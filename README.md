@@ -4,11 +4,11 @@
 
 ### REQUISITOS:
 
--> Python versão 2.7.x instalado;
+* Python versão 2.7.x instalado;
 
 ### COMO EXECUTAR:
 
--> Basta clicar duas vezes no arquivo simulador_de_memoria_cache.py para executar o programa
+* Basta clicar duas vezes no arquivo simulador_de_memoria_cache.py para executar o programa
 
 ### TUTORIAL:
 
