@@ -16,29 +16,27 @@
 
 2. Depois de informar o número de paginas da cache, a seguinte mensagem aparecerá na tela:
 
-//Digite o tipo de mapeamento: 
+```
+Digite o tipo de mapeamento: 
 
-//
-
-//1 - Mapeamento Direto
-
-//2 - Mapeamento Associativo
-
-//3 - Mapeamento Associativo por conjunto
+1 - Mapeamento Direto
+2 - Mapeamento Associativo
+3 - Mapeamento Associativo por conjunto
+```
 
     É necessário somente digitar o número respectivo ao mapeamento desejado;
 3. No caso de escolha do mapeamento direto, será necessário somente digitar o nome do arquivo que contem as requisições de endereços de memória. O nome do arquivo deve ser informado também com a sua extensão; Ex.: 'nome_do_arquivo.txt' 
 
 4. No caso de escolha do mapeamento associativo e associativo por conjunto, a seguinte mensagem aparecerá na tela:
+
+```
 Digite o algoritmo: 
 
-//1 - FIFO
-
-//2 - LRU
-
-//3 - LFU
-
-//4 - RANDOM
+1 - FIFO
+2 - LRU
+3 - LFU
+4 - RANDOM
+```
 
     É necessário somente digitar o número respectivo ao algoritmo desejado;
     
@@ -50,37 +48,23 @@ Digite o algoritmo:
 
 acessos.txt:
 
-#----------------------------------------
 
+```
 0
-
 1
-
 2
-
 3
-
 4
-
 3
-
 2
-
 1
-
 5
-
 8
-
 6
-
 10
-
 2
-
 1
-
-#----------------------------------------
+```
 
 #### *MAPEAMENTO DIRETO:
 
