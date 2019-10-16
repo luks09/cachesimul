@@ -230,10 +230,12 @@ def mapeamento_associativo_conjuntos(enderecos_solicitados, tipo):
 						conjunto * tamanho_quadro + dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro].index(
 							None)] = enderecos_solicitados[contador]
 				else:
-					index = dados_cache.index(min(dados_cache[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]))
+
+					index = conjunto*tamanho_quadro + dados_cache_frequencia[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro].index(min(dados_cache_frequencia[conjunto * tamanho_quadro:(conjunto + 1) * tamanho_quadro]))
 					dados_cache.pop(index)
 					dados_cache.insert(index, enderecos_solicitados[contador])
 					dados_cache_frequencia[index] = 1
+
 			contador += 1
 			status_cache_operacoes()
 
@@ -488,7 +490,7 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 		# ------------------------------LFU------------------------------------
 		if (tipo == 3):
 			if (recomecar == "sim"):
-				dados_cache_frequencia = instancia_memoria_cache()
+				dados_cache_frequencia = instancia_memoria_cache(inicial=0)
 			elif not dados_cache_frequencia:
 				dados_cache_frequencia = instancia_memoria_cache(inicial=0)
 				if dados_cache_recencia:
@@ -518,7 +520,7 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 		# ------------------------------LFU------------------------------------
 		if (tipo == 3):
 			if (recomecar == "sim"):
-				dados_cache_frequencia = instancia_memoria_cache()
+				dados_cache_frequencia = instancia_memoria_cache(inicial=0)
 			elif not dados_cache_frequencia:
 				dados_cache_frequencia = instancia_memoria_cache(inicial=0)
 				if dados_cache_recencia:
