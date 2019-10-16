@@ -29,7 +29,8 @@ Digite o tipo de mapeamento:
 3 - Mapeamento Associativo por conjunto
 ```
 
-    É necessário somente digitar o número respectivo ao mapeamento desejado;
+Deve-se digitar o número respectivo ao mapeamento desejado;
+
 3. No caso de escolha do mapeamento direto, será necessário somente digitar o nome do arquivo que contem as requisições de endereços de memória. O nome do arquivo deve ser informado também com a sua extensão; Ex.: 'nome_do_arquivo.txt' 
 
 4. No caso de escolha do mapeamento associativo e associativo por conjunto, a seguinte mensagem aparecerá na tela:
@@ -43,9 +44,9 @@ Digite o algoritmo:
 4 - RANDOM
 ```
 
-    É necessário somente digitar o número respectivo ao algoritmo desejado;
+É necessário somente digitar o número respectivo ao algoritmo desejado para a política de substituição da cache;
     
-5. No caso de escolha do mapeamento associativo por conjunto, após a escolha do algoritmo, uma mensagem aparecerá requisitando a informação do número de quadros por conjunto;
+5. No caso de escolha do mapeamento associativo por conjunto, após a escolha do algoritmo, uma mensagem aparecerá requisitando o número de conjuntos;
 
 6. Ao fim do preenchimento das informações, será executado o mapeamento escolhido na configuração informada. A cada solicitação, é apresentado o estado da cache, a solicitacao de endereco específica e também se aconteceu um cache-hit ou cache-miss. 
     
