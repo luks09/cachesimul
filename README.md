@@ -1057,7 +1057,7 @@ Pressione qualquer tecla para finalizar
 ----Simulador de memoria Cache----
 
 Digite o numero de paginas da cache: 4
-Digite o tipo de mapeamento:
+Digite o tipo de mapeamento: 
 
 1 - Mapeamento Direto
 2 - Mapeamento Associativo
@@ -1065,7 +1065,7 @@ Digite o tipo de mapeamento:
 
 3
 
-Digite o algoritmo:
+Digite o algoritmo: 
 
 1 - FIFO
 2 - LRU
@@ -1080,112 +1080,112 @@ Digite o nome do arquivo de entrada (o arquivo deve estar na mesma pasta que est
 O tamanho da cache e de 4 paginas
 
 
-Dados da cache:
+Dados da cache: 
 
 |  - |  - |
-|  - |  - |
+|  - |  - | 
 
 Dados do endereco 0 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 0 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  0 |  - |
-|  - |  - |
+|  - |  - | 
 
 Dados do endereco 1 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 1 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  0 |  - |
-|  1 |  - |
+|  1 |  - | 
 
 Dados do endereco 2 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 2 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  0 |  2 |
-|  1 |  - |
+|  1 |  - | 
 
 Dados do endereco 3 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 3 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  0 |  2 |
-|  1 |  3 |
+|  1 |  3 | 
 
 Dados do endereco 4 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 4 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  4 |  2 |
-|  1 |  3 |
+|  1 |  3 | 
 
 Dados do endereco 3 da memoria principal foram solicitados!
 CACHE-HIT - Os dados do endereco 3 da memoria principal ja estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  4 |  2 |
-|  1 |  3 |
+|  1 |  3 | 
 
 Dados do endereco 2 da memoria principal foram solicitados!
 CACHE-HIT - Os dados do endereco 2 da memoria principal ja estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  4 |  2 |
-|  1 |  3 |
+|  1 |  3 | 
 
 Dados do endereco 1 da memoria principal foram solicitados!
 CACHE-HIT - Os dados do endereco 1 da memoria principal ja estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  4 |  2 |
-|  1 |  3 |
+|  1 |  3 | 
 
 Dados do endereco 5 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 5 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  4 |  2 |
-|  5 |  3 |
+|  5 |  3 | 
 
 Dados do endereco 8 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 8 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
-|  4 |  8 |
-|  5 |  3 |
+|  8 |  2 |
+|  5 |  3 | 
 
 Dados do endereco 6 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 6 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
-|  6 |  8 |
-|  5 |  3 |
+|  6 |  2 |
+|  5 |  3 | 
 
 Dados do endereco 10 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 10 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
-
-|  10 |   8 |
-|   5 |   3 |
-
-Dados do endereco 2 da memoria principal foram solicitados!
-CACHE-MISS - Os dados do endereco 2 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  10 |   2 |
-|   5 |   3 |
+|   5 |   3 | 
+
+Dados do endereco 2 da memoria principal foram solicitados!
+CACHE-HIT - Os dados do endereco 2 da memoria principal ja estavam na memoria cache
+Dados da cache apos a solicitacao: 
+
+|  10 |   2 |
+|   5 |   3 | 
 
 Dados do endereco 1 da memoria principal foram solicitados!
 CACHE-MISS - Os dados do endereco 1 da memoria principal nao estavam na memoria cache
-Dados da cache apos a solicitacao:
+Dados da cache apos a solicitacao: 
 
 |  10 |   2 |
-|   5 |   1 |
+|   1 |   3 | 
 
-CACHE-HITS: 3
-CACHE-MISSES: 11
-FRACAO DE CACHE-HITS: 21.43 %
+CACHE-HITS: 4
+CACHE-MISSES: 10
+FRACAO DE CACHE-HITS: 28.57 %
 
 
 Deseja executar o programa novamente (sim/ nao) *ARGUMENTO: -naozerarcache): nao
