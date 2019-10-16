@@ -51,7 +51,7 @@ Digite o algoritmo:
     
 ### EXEMPLOS DE UTILIZAÇÃO:
 
-acessos.txt:
+Nos exemplos abaixo é utiilizado o arquivo 'acessos.txt' contendo as solicitações de acesso à memória principal. Os valores contidos no arquivo 'acessos.txt' estão descritos abaixo:
 
 
 ```
@@ -70,6 +70,8 @@ acessos.txt:
 2
 1
 ```
+
+A seguir, são mostradas as execuções do programa, somente variando o tipo de mapeamento empregado. 
 
 #### *MAPEAMENTO DIRETO:
 
