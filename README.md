@@ -51,7 +51,7 @@ Digite o algoritmo:
     
 ### EXEMPLOS DE UTILIZAÇÃO:
 
-Nos exemplos abaixo é utilizado o arquivo 'acessos.txt' contendo as solicitações de acesso à memória principal. Os valores do arquivo 'acessos.txt' estão descritos abaixo:
+Nos exemplos abaixo, o arquivo 'acessos.txt' é utilizado, contendo as solicitações de acesso à memória principal. Os valores do arquivo 'acessos.txt' estão descritos abaixo:
 
 
 ```
