@@ -408,7 +408,7 @@ while (str.lower(recomecar) == "sim" or str.lower(recomecar).replace(" ","") == 
 	except:
 		print
 	while (tipo_mapeamento != 1 and tipo_mapeamento != 2 and tipo_mapeamento != 3):
-		tipo_mapeamento = raw_input("Valor incorreto!\n\nDigite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo\n\n")
+		tipo_mapeamento = raw_input("Valor incorreto!\n\nDigite o tipo de mapeamento: \n\n1 - Mapeamento Direto\n2 - Mapeamento Associativo\n3 - Mapeamento Associativo por conjunto\n\n")
 		try:
 			tipo_mapeamento = int(tipo_mapeamento)
 		except:
